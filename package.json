@@ -1,0 +1,24 @@
+{
+  "name": "testonfly",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Pedro Guerra",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PedroGuerraMP/testOnFLY.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PedroGuerraMP/testOnFLY/issues"
+  },
+  "homepage": "https://github.com/PedroGuerraMP/testOnFLY#readme",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
