@@ -71,10 +71,10 @@ class DespesaRepository {
         }
     }
 
-    async deletar(id){
+    async deletar(id, login){
         try{
             const linhasDeletadas = await DespesaModel.destroy(
-                { where: {id: id} } 
+                { where: {id: id, login:login} } 
             )
 
             if(linhasDeletadas == 0)

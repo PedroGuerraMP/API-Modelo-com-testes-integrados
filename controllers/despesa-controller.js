@@ -12,12 +12,12 @@ DespesaController.use(bodyParser.json());
 
 DespesaController.get('', authenticateToken, async (req, res) => {
     try{
-        const { login, descricao } = req.query;
+        const { descricao } = req.query;
         var listaDespesa;
         if(descricao)
-            listaDespesa = await DespesaRepository.pesquisarPorDescricao(login, descricao)
+            listaDespesa = await DespesaRepository.pesquisarPorDescricao(req.userId, descricao)
         else
-            listaDespesa = await DespesaRepository.listar(login);
+            listaDespesa = await DespesaRepository.listar(req.userId);
         res.status(200).json(listaDespesa);
 
     } catch (error) {
@@ -28,8 +28,8 @@ DespesaController.get('', authenticateToken, async (req, res) => {
 
 DespesaController.post('', authenticateToken, async (req, res) => {
     try{
-        const { login, descricao, valor, data } = req.body;
-        const novaDespesa = await DespesaRepository.criar(login, descricao, data, valor)
+        const { descricao, valor, data } = req.body;
+        const novaDespesa = await DespesaRepository.criar(req.userId, descricao, data, valor)
         res.status(201).json(novaDespesa);
     } catch (error) {
         console.error('Erro ao Criar Despesa:', error);
@@ -39,8 +39,8 @@ DespesaController.post('', authenticateToken, async (req, res) => {
 
 DespesaController.put('', authenticateToken, async (req, res) => {
     try{
-        const { login, descricao, valor, data } = req.body;
-        const novaDespesa = await DespesaRepository.editar(login, descricao, valor, data)
+        const { descricao, valor, data } = req.body;
+        const novaDespesa = await DespesaRepository.editar(req.userId, descricao, valor, data)
         res.status(201).json(novaDespesa);
     } catch (error) {
         console.error('Erro ao Editar Despesa:', error);
@@ -51,7 +51,7 @@ DespesaController.put('', authenticateToken, async (req, res) => {
 DespesaController.delete('', authenticateToken, async (req, res) => {
     try{
         const { id } = req.query;
-        await DespesaRepository.deletar(id)
+        await DespesaRepository.deletar(id, req.userId)
         res.status(204).json();
     } catch (error) {
         console.error('Erro ao Deletar Despesa:', error);
