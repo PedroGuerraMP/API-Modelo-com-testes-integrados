@@ -15,7 +15,7 @@ class UsuarioRepository {
             });
 
         } catch (error) {
-            throw ('Erro ao criar usuário no banco de dados: ' + error.message);
+            throw error.message;
         }
     }
 
@@ -27,7 +27,7 @@ class UsuarioRepository {
             });
 
         } catch (error) {
-          throw 'Erro ao listar usuários';
+            throw error.message;
         }
     }
     
@@ -39,7 +39,40 @@ class UsuarioRepository {
             });
 
         } catch (error) {
-          throw 'Erro ao buscar usuário';
+            throw error.message;
+        }
+    }
+
+    async editar(paramLogin, novaSenha){
+        try{
+            
+            const salt = await bcrypt.genSalt(10);
+            const senhaCriptografada = await bcrypt.hashSync(novaSenha, salt); 
+            
+            const [linhasAlteradas] = await UsuarioModel.update(
+                { senha: senhaCriptografada},
+                { where: {login: paramLogin} } 
+            )
+
+            if(linhasAlteradas == 0)
+                throw "Nenhum registro encontrado";
+        }
+        catch (error) {
+            throw error.message? error.message : error;
+        }
+    }
+
+    async deletar(login){
+        try{
+            const linhasDeletadas = await UsuarioModel.destroy(
+                { where: {login: login} } 
+            )
+
+            if(linhasDeletadas == 0)
+                throw "Nenhum registro encontrado";
+        }
+        catch (error) {
+            throw error.message? error.message : error;
         }
     }
 }
