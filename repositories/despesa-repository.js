@@ -8,6 +8,8 @@ class DespesaRepository {
         try {
 
             console.log(new Date(data).toString())
+            
+            await validaDespesa(data, valor, descricao);
 
             return await DespesaModel.create({
                 loginUsuario: login,
@@ -19,6 +21,21 @@ class DespesaRepository {
         } catch (error) {
             throw error.message;
         }
+    }
+
+    async validaDespesa(data, valor, descricao){
+
+        let dataConvertida = new Date(data);
+
+        if(isNaN(dataConvertida.getTime()) || dataConvertida > Date.now()) 
+            throw "Data Inválida";
+
+        if(isNaN(valor) || valor < 0)
+            throw "Valor Inválido";
+
+        if(descricao.length == 0 || descricao.length > 191)
+            throw "Descrição Inválida";
+
     }
 
     async listar(login) {
@@ -53,7 +70,6 @@ class DespesaRepository {
 
     async editar(login, descricao, valor, data){
         try{
-            
             const [linhasAlteradas] = await DespesaModel.update(
                 { 
                     descricao: descricao,
