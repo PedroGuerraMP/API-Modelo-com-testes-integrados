@@ -1,14 +1,19 @@
-const Usuario = require('../models/usuario-model');
+const bcrypt = require ('bcrypt');
+
+const UsuarioModel = require('../models/usuario-model');
 
 class UsuarioRepository {
 
     async criar(login, senha) {
         try {
-        const usuario = await Usuario.create({
-            login,
-            senha,
-        });
-            return usuario;
+            const salt = await bcrypt.genSalt(10);
+            const senhaCriptografada = bcrypt.hashSync(senha, salt);
+
+            return await UsuarioModel.create({
+                login: login,
+                senha: senhaCriptografada,
+            });
+
         } catch (error) {
             throw ('Erro ao criar usuário no banco de dados: ' + error.message);
         }
@@ -16,12 +21,25 @@ class UsuarioRepository {
 
     async listar() {
         try {
-            const listaUsuario = await Usuario.findAll({
+
+            return await UsuarioModel.findAll({
                 limit: 20 
-              });
-          return listaUsuario;
+            });
+
         } catch (error) {
-          throw new Error('Erro ao listar usuários');
+          throw 'Erro ao listar usuários';
+        }
+    }
+    
+    async pesquisarPorLogin(login) {
+        try {
+
+            return await UsuarioModel.findOne({
+                where: { login: login }
+            });
+
+        } catch (error) {
+          throw 'Erro ao buscar usuário';
         }
     }
 }
