@@ -37,8 +37,12 @@ UsuarioController.post('', async (req, res) => {
 UsuarioController.put('', authenticateToken, async (req, res) => {
     try{
         const { login, novaSenha } = req.body;
-        const novoUsuario = await UsuarioRepository.editar(login, novaSenha)
-        res.status(201).json(novoUsuario);
+        const linhasAlteradas = await UsuarioRepository.editar(login, novaSenha)
+        
+        if(linhasAlteradas == 0)
+                throw "Nenhum registro encontrado";
+        
+        res.status(204).json();
     } catch (error) {
         console.error('Erro ao Editar Usuario:', error);
         res.status(400).json(error);
@@ -47,7 +51,7 @@ UsuarioController.put('', authenticateToken, async (req, res) => {
 
 UsuarioController.delete('', authenticateToken, async (req, res) => {
     try{
-        const { login } = req.body;
+        const { login } = req.query;
         await UsuarioRepository.deletar(login)
         res.status(204).json();
     } catch (error) {
@@ -70,7 +74,7 @@ LoginController.post('', async (req, res) => {
     
     const token = jwt.sign({ userId: login }, 'secreto', { expiresIn: '1h' });
     
-    res.json({ token });
+    res.status(202).json({ token });
 
     } catch (error) {
         console.error('Erro ao Criar Usuario:', error);

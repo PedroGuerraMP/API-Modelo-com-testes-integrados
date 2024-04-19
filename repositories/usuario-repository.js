@@ -6,15 +6,25 @@ class UsuarioRepository {
 
     async criar(login, senha) {
         try {
+            if(senha.length == 0)
+                throw 'Senha vazia';
+
+            if(login.length == 0)
+                throw 'Login vazio';
+            
+            if(await this.pesquisarPorLogin(login) != undefined)
+                throw 'Login ja Existente';
+
             const salt = await bcrypt.genSalt(10);
             const senhaCriptografada = bcrypt.hashSync(senha, salt);
+            
             return await UsuarioModel.create({
                 login: login,
                 senha: senhaCriptografada,
             });
 
         } catch (error) {
-            throw error.message;
+            throw error.message == undefined? error : error.message;
         }
     }
 
@@ -44,7 +54,9 @@ class UsuarioRepository {
 
     async editar(paramLogin, novaSenha){
         try{
-            
+            if(novaSenha.length == 0)
+                throw 'Senha Vazia';
+
             const salt = await bcrypt.genSalt(10);
             const senhaCriptografada = await bcrypt.hashSync(novaSenha, salt); 
             
@@ -53,8 +65,6 @@ class UsuarioRepository {
                 { where: {login: paramLogin} } 
             )
 
-            if(linhasAlteradas == 0)
-                throw "Nenhum registro encontrado";
         }
         catch (error) {
             throw error.message? error.message : error;
