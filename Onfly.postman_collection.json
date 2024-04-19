@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "08114494-000c-4c76-b221-4529e4acfc86",
+		"name": "Onfly",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7200448"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "GET Usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZXN0ZSIsImlhdCI6MTcxMzQ5OTUzOSwiZXhwIjoxNzEzNTAzMTM5fQ.Glr3WwhXUtXYyMJIRiLmOIf8ENSaeyzlEgHtxRjC10U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:{{apiport}}/Usuario",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "{{apiport}}",
+							"path": [
+								"Usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZXN0ZSIsImlhdCI6MTcxMzMzNjY3NCwiZXhwIjoxNzEzMzQwMjc0fQ.VaO2-fU722Ar-TGLYmFhNWsYLK0RvjCO5BYsBtSzgb8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\":\"teste3\",\r\n    \"senha\": \"senha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:{{apiport}}/Usuario",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "{{apiport}}",
+							"path": [
+								"Usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZXN0ZSIsImlhdCI6MTcxMzQ5OTUzOSwiZXhwIjoxNzEzNTAzMTM5fQ.Glr3WwhXUtXYyMJIRiLmOIf8ENSaeyzlEgHtxRjC10U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\":\"teste2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:{{apiport}}/Usuario",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "{{apiport}}",
+							"path": [
+								"Usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\":\"Login Existente\",\r\n    \"senha\": \"senha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:{{apiport}}/Login",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "{{apiport}}",
+							"path": [
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZXN0ZSIsImlhdCI6MTcxMzMzNTg2MCwiZXhwIjoxNzEzMzM5NDYwfQ.RKk6byFCsJQP1xLtRth2mJNRlndMsHyb5RNVpN5q4aQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\":\"teste\",\r\n    \"novaSenha\": \"senha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:{{apiport}}/Usuario",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "{{apiport}}",
+							"path": [
+								"Usuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Despesa",
+			"item": [
+				{
+					"name": "POST Despesa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZXN0ZSIsImlhdCI6MTcxMzUxNTEzNiwiZXhwIjoxNzEzNTE4NzM2fQ.smCzic483NzpLhJgQnI1ih3tspxXAuhzk4mAzLwzwbc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Despesa2-teste\",\r\n    \"data\": \"2024-04-17\",\r\n    \"valor\": 1.23,\r\n    \"login\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:{{apiport}}/Despesa",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "{{apiport}}",
+							"path": [
+								"Despesa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Despesa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZXN0ZSIsImlhdCI6MTcxMzMzNjY3NCwiZXhwIjoxNzEzMzQwMjc0fQ.VaO2-fU722Ar-TGLYmFhNWsYLK0RvjCO5BYsBtSzgb8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:{{apiport}}/Despesa?id=1",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "{{apiport}}",
+							"path": [
+								"Despesa"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Despesa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZXN0ZSIsImlhdCI6MTcxMzMzNjY3NCwiZXhwIjoxNzEzMzQwMjc0fQ.VaO2-fU722Ar-TGLYmFhNWsYLK0RvjCO5BYsBtSzgb8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:{{apiport}}/Despesa?login=teste",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "{{apiport}}",
+							"path": [
+								"Despesa"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "teste"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Despesa por Desc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZXN0ZSIsImlhdCI6MTcxMzMzNjY3NCwiZXhwIjoxNzEzMzQwMjc0fQ.VaO2-fU722Ar-TGLYmFhNWsYLK0RvjCO5BYsBtSzgb8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Despesa1-teste\",\r\n    \"data\": \"2024-04-17\",\r\n    \"valor\": 1.23,\r\n    \"login\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:{{apiport}}/Despesa?login=teste&descricao=Despesa1",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "{{apiport}}",
+							"path": [
+								"Despesa"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "teste"
+								},
+								{
+									"key": "descricao",
+									"value": "Despesa1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Despesa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZXN0ZSIsImlhdCI6MTcxMzMzNjY3NCwiZXhwIjoxNzEzMzQwMjc0fQ.VaO2-fU722Ar-TGLYmFhNWsYLK0RvjCO5BYsBtSzgb8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Despesa2.0-teste\",\r\n    \"data\": \"2024-04-17\",\r\n    \"valor\": 3.21,\r\n    \"login\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:{{apiport}}/Despesa",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "{{apiport}}",
+							"path": [
+								"Despesa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "http://localhost"
+		},
+		{
+			"key": "apiport",
+			"value": "3000"
+		}
+	]
+}
