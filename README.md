@@ -4,7 +4,7 @@ API REST com CRUD Básico de Usuário e Despesas.
 
 Instalação e Testes
 
-1- git clone https://github.com/seu-usuario/nome-do-repositorio.git
+1- git clone https://github.com/PedroGuerraMP/testOnFLY.git
 
 2- npm install
 
