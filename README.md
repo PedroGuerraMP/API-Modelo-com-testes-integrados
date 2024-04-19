@@ -12,6 +12,8 @@ Instalação e Testes
 
 4- npm start
 
+5- Coleçao de requisições do postman disponíveis na raiz do projeto.
+
 Executando Testes
 
 1- verifique o arquivo .env. A variável NODE_ENV deve estar com o valor test
