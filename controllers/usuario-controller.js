@@ -23,7 +23,7 @@ UsuarioController.get('', authenticateToken, async (req, res) => {
     }
 });
 
-UsuarioController.post('', authenticateToken, async (req, res) => {
+UsuarioController.post('', async (req, res) => {
     try{
         const { login, senha } = req.body;
         const novoUsuario = await UsuarioRepository.criar(login, senha)
@@ -55,7 +55,6 @@ UsuarioController.delete('', authenticateToken, async (req, res) => {
         res.status(400).json(error);
     }
 });
-
 
 LoginController.post('', async (req, res) => {
     try{

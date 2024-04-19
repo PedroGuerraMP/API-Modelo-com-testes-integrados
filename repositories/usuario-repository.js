@@ -1,6 +1,6 @@
 const bcrypt = require ('bcrypt');
 
-const UsuarioModel = require('../models/usuario-model');
+const UsuarioModel = require('../utils/utils').loadModels().UsuarioModel;
 
 class UsuarioRepository {
 
@@ -8,7 +8,6 @@ class UsuarioRepository {
         try {
             const salt = await bcrypt.genSalt(10);
             const senhaCriptografada = bcrypt.hashSync(senha, salt);
-
             return await UsuarioModel.create({
                 login: login,
                 senha: senhaCriptografada,

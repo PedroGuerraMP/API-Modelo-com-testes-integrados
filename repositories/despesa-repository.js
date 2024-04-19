@@ -7,8 +7,6 @@ class DespesaRepository {
     async criar(login, descricao, data, valor) {
         try {
 
-            console.log(new Date(data).toString())
-            
             await validaDespesa(data, valor, descricao);
 
             return await DespesaModel.create({
