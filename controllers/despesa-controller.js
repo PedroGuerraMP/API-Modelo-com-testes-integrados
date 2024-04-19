@@ -40,8 +40,11 @@ DespesaController.post('', authenticateToken, async (req, res) => {
 DespesaController.put('', authenticateToken, async (req, res) => {
     try{
         const { descricao, valor, data } = req.body;
-        const novaDespesa = await DespesaRepository.editar(req.userId, descricao, valor, data)
-        res.status(201).json(novaDespesa);
+        const linhasAlteradas = await DespesaRepository.editar(req.userId, descricao, valor, data)
+        if(linhasAlteradas == 0)
+                throw "Nenhum registro encontrado";
+        
+        res.status(204).json();
     } catch (error) {
         console.error('Erro ao Editar Despesa:', error);
         res.status(400).json(error);

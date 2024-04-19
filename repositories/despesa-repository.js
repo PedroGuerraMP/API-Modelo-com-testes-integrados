@@ -1,13 +1,22 @@
 const { Op } = require('sequelize');
 
-const DespesaModel = require('../models/despesa-model');
+const DespesaModel = require('../utils/utils').loadModels().DespesaModel;
 
 class DespesaRepository {
 
     async criar(login, descricao, data, valor) {
         try {
 
-            await validaDespesa(data, valor, descricao);
+            let dataConvertida = new Date(data);
+
+            if(isNaN(dataConvertida.getTime()) || dataConvertida > Date.now()) 
+                throw "Data Inválida";
+
+            if(isNaN(valor) || valor < 0)
+                throw "Valor Inválido";
+
+            if(descricao.length == 0 || descricao.length > 191)
+                throw "Descrição Inválida";
 
             return await DespesaModel.create({
                 loginUsuario: login,
@@ -17,23 +26,8 @@ class DespesaRepository {
             });
 
         } catch (error) {
-            throw error.message;
+            throw error.message? error.message : error;
         }
-    }
-
-    async validaDespesa(data, valor, descricao){
-
-        let dataConvertida = new Date(data);
-
-        if(isNaN(dataConvertida.getTime()) || dataConvertida > Date.now()) 
-            throw "Data Inválida";
-
-        if(isNaN(valor) || valor < 0)
-            throw "Valor Inválido";
-
-        if(descricao.length == 0 || descricao.length > 191)
-            throw "Descrição Inválida";
-
     }
 
     async listar(login) {
@@ -68,6 +62,15 @@ class DespesaRepository {
 
     async editar(login, descricao, valor, data){
         try{
+            if(isNaN(new Date(data).getTime()) || new Date(data) > Date.now()) 
+                throw "Data Invalida";
+
+            if(isNaN(valor) || valor < 0)
+                throw "Valor Inválido";
+
+            if(descricao.length == 0 || descricao.length > 191)
+                throw "Descrição Inválida";
+
             const [linhasAlteradas] = await DespesaModel.update(
                 { 
                     descricao: descricao,

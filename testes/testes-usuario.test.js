@@ -167,7 +167,6 @@ describe('Usuario - Endpoints', () => {
                 assert.equal(res.status, 204);
                 done();
             }).catch((err)=> {
-                console.log(err.response.data)
                 done()
             });
         });
